@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>URL to Image Tool</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+ *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+ }
+
+    body {
+      background-color: #f4f4f4;
+      padding-top: 40px;
+      background: gray;
+    }
+
+    .container {
+      max-width: 900px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 1px 2px 5px 10px rgba(24, 25, 22, 0.7);
+      padding: 20px;
+      margin: 0 auto;
+      background-image: url(https://images.freeimages.com/images/previews/712/red-church-1641745.jpg);
+        background-size: cover;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: whitesmoke;
+      box-shadow: 1px 2px 5px 10px rgba(24, 25, 22, 0.7);
+      font-size: 30px; 
+      background: skyblue;
+      transform: scale(.7);
+    }
+    h2:hover{
+     color:black;
+     transform: scale(1);    
+    background: wheat;
+    color: black;
+     }
+
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    .btn-generate {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      width: 100%;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .image-container {
+      text-align: center;
+      margin-top: 30px;
+      width: 100%;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      max-height: 350px; 
+     box-shadow: 1px 2px 5px 10px rgba(24, 25, 222, 0.9);
+      animation: roll 5s linear infinite;
+      
+
+     }
+     
+@keyframes roll{
+ 0%{
+    transform: scale(.9);
+ }
+ 50%{
+    transform: scale(1);
+ }
+ 100%{
+    transform: scale(.9);
+ }
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 >URL to Image Tool</h2>
+    <form>
+      <div class="form-group">
+        <label for="image-url">Image URL:</label>
+        <input type="url" id="image-url" class="form-control" placeholder="Enter image URL" required>
+      </div>
+      <button type="button" class="btn btn-generate" onclick="generateImage()">Click to Generate</button>
+    </form>
+</form>
+<div id="image-container" class="image-container"></div>
+</div>
+
+   
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    function generateImage() {
+      var imageUrl = document.getElementById('image-url').value;
+      var imageContainer = document.getElementById('image-container');
+      
+      // Clear previous image
+      imageContainer.innerHTML = '';
+      
+      // Create and display image element
+      var imageElement = document.createElement('img');
+      imageElement.src = imageUrl;
+      imageContainer.appendChild(imageElement);
+      
+      // Handle image load error
+         imageElement.onerror = function() {
+         imageContainer.innerHTML = 'Error loading image.';
+      };
+      
+      // Handle image load success
+        imageElement.onload = function() {
+        imageContainer.innerHTML = '';
+        imageContainer.appendChild(imageElement);
+      };
+    }
+  </script>
+</body>
+</html>
