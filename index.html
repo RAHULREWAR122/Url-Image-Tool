@@ -87,7 +87,12 @@
     transform: scale(.9);
  }
 }
+p{
+  color: darkblue;
+  margin-top: 90px;
+margin-left: 40px;
 
+}
 
   </style>
 </head>
@@ -104,10 +109,12 @@
 </form>
 <div id="image-container" class="image-container"></div>
 </div>
-
+<p><b>What is a URL?</b>
+ <p style="color: bisque;margin-top: 0px; " > A URL (Uniform Resource Locator) is a unique identifier used to locate a resource on the Internet. It is also referred to as a web address. URLs consist of multiple parts -- including a protocol and domain name -- that tell a web browser how and where to retrieve a resource.
+  
+  End users use URLs by typing them directly into the address bar of a browser or by clicking a hyperlink found on a webpage, bookmark list, in an email or from another application.</p>
    
 
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script>
     function generateImage() {
       var imageUrl = document.getElementById('image-url').value;
@@ -125,7 +132,8 @@
          imageElement.onerror = function() {
          imageContainer.innerHTML = 'Error loading image.';
       };
-      
+      // <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+ 
       // Handle image load success
         imageElement.onload = function() {
         imageContainer.innerHTML = '';
